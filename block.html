@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ゲームの石</title>
+    <link rel="stylesheet" href="block.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" クロスオリジン>
+    <link href="https: //fonts.googleapis.com/css2?family=DotGothic16&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <div class="header_title">
+                <a href="index.html">プロモン<br>アドベンチャー</a>
+            </div>
+
+            <ul class="header_nav" id="js-nav">
+                <li><a href="index.html#story">ものがたり</a></li>
+                <li><a href="index.html#promon">プロモン</a></li>
+                <li><a href="index.html#tool">どうぐ</a></li>
+                <li><a href="index.html#map">ちず</a></li>
+                <li><a href="index.html#report">レポート</a></li>
+            </ul>
+
+            <button class="header_hamburger" id="js-hamburger">
+                <span class="sp1" id="js-sp1"></span>
+                <span class="sp2" id="js-sp2"></span>
+                <span class="sp3" id="js-sp3"></span>
+            </button>
+
+        </header>
+
+        <main class="main">
+
+            <section id="block-game" class="wrapper">
+                <h2>ブロック崩しゲーム</h2>
+                <dir class="game-main">
+                    <div id="block" class="sec-control-button">
+                        <button id="leftButton">左</button>
+                    </div>
+                    <div id="block" class="sec-block-main">
+                        <canvas id="myCanvas" width="480" height="320">canvas要素をサポートしていません。</canvas>
+                    </div>
+                    <div id="block" class="sec-control-button">
+                        <button id="rightButton">右</button>
+                    </div>
+                </dir>
+                <div id="block" class="sec-block-button">
+                    <button id="stopButton">ストップ</button>
+                    <button id="startButton">スタート</button>
+                    <button id="resetButton">リセット</button>
+                </div>
+            </section>
+
+        </main>
+
+        <div class="pagetop">
+            <a href="#">▲ページトップに戻る</a>
+        </div>
+
+        <footer class="footer">
+        </footer>
+
+        <script src="script.js"></script>
+        <script src="block.js"></script>
+    </div>
+</body>
+
+</html>

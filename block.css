@@ -1,0 +1,341 @@
+@charset "utf-8";
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    /* 要素に間隔含む */
+}
+
+html {
+    font-size: 100%;
+    /* 16px */
+        font-family: "DotGothic16", sans-serif;
+        font-weight: 400;
+        font-style: normal;
+    overflow-y: scroll;
+    /* スクロールバー常に表示 */
+
+}
+
+body {
+    background: #F5F5DC;
+    overflow: hidden;
+    font-weight: bold;
+}
+
+
+a {
+    color: #000;
+    text-decoration: none;
+    /* 下線を消す */
+}
+
+
+a:hover {
+    opacity: 0.5;
+    /* 透明度下げる  */
+}
+
+ul {
+    list-style: none;
+    /* 点を消す */
+}
+
+/*----- ヘッダー ------------------------------------*/
+
+header {
+    background: #F5F5DC;
+    background-color: rgba(245, 245, 220, 0.8);
+    /*-- 色は白、透明度は0.8の場合 --*/
+    width: 100vw;
+    height: 25vh;
+    position: fixed;
+    /* 固定  */
+    display: flex;
+    /* 横並び */
+    justify-content: space-around;
+    /* 水平方向に均等配置 */
+    align-items: center;
+    z-index: 99;
+    /* 表示を先頭に */
+}
+
+@media screen and (max-width: 400px) {
+    header {
+        height: 15vh;
+    }
+}
+
+
+/* ヘッダータイトル */
+.header_title {
+    margin: 10px;
+    text-align: center;
+    /* 中央寄せ */
+    font-size: 3rem;
+    font-weight: bold;
+}
+
+@media screen and (max-width: 400px) {
+    .header_title {
+        font-size: 1.5rem;
+    }
+}
+
+/* ヘッダーナビ */
+.header_nav {
+    display: flex;
+    margin: 10px;
+    padding: 1rem 1rem;
+    gap: 20px;
+    font-weight: bold;
+    border: 6px double #000;
+    /* 二重枠線  */
+    border-radius: 5px;
+    /* 角丸 */
+}
+
+/* ヘッダーハンバーガーメニュー */
+.header_hamburger {
+    margin: 10px;
+    border: none;
+    /* 枠線なし */
+    background: transparent;
+    /* 透明色 */
+    cursor: pointer;
+    /* 指差しマーク */
+    display: none;
+}
+
+.header_hamburger:hover {
+    opacity: 0.5;
+    /* 透明度下げる  */
+}
+
+/* ハンバーガーの３本線 */
+.header_hamburger span {
+    display: block;
+    background-color: #000;
+    width: 25px;
+    height: 3px;
+    margin: 5px;
+    position: relative;
+    /* 表示位置を基準にする */
+}
+
+/* レスポンシブ　ブレイクポイント */
+@media screen and (max-width: 768px) {
+
+    body {
+        overflow: hidden;
+        /* はみ出た部分を隠す */
+    }
+
+    .header_nav {
+        position: absolute;
+        /* 親要素を基準 */
+        right: 0;
+        top: 25vh;
+        height: 50vh;
+        width: 40vw;
+        margin: 0;
+        background: #F5F5DC;
+        flex-direction: column;
+        /* 縦並び */
+        align-items: center;
+        transform: translatex(100%);
+        /* */
+    }
+
+    .header_nav li {
+        margin: auto;
+    }
+
+    .header_hamburger {
+        display: block;
+        /* ハンバーガーメニュー出現 */
+    }
+
+}
+
+@media screen and (max-width: 400px) {
+    .header_nav {
+        position: absolute;
+        /* 親要素を基準 */
+        right: 0;
+        top: 15vh;
+    }
+}
+
+
+/* ハンバーガークリック時の動き */
+.header_nav.active {
+    transform: translatex(0%);
+    /*  ナビメニュー出現 */
+}
+
+.sp1.active {
+    top: 5px;
+    transform: rotate(45deg);
+}
+
+.sp2.active {
+    opacity: 0;
+    /* 真ん中は見えなくする */
+}
+
+.sp3.active {
+    top: -11px;
+    transform: rotate(-45deg);
+}
+
+/*----- メイン ------------------------------------------*/
+
+main {
+    padding-top: 25vh;
+    /* ヘッダー固定の分下にずらす */
+}
+@media screen and (max-width: 400px) {
+    main {
+        padding-top: 15vh;
+        /* ヘッダー固定の分下にずらす */
+    }
+}
+
+
+/* セクションの統一 */
+.wrapper {
+    margin: -30vh 1vw 5vh 1vw;
+    padding-top: 30vh;
+    /* リンク先がヘッダーと重ならないようにする */
+    text-align: center;
+}
+@media screen and (max-width: 400px) {
+    .wrapper {
+        margin: -15vh 1vw 5vh 1vw;
+        padding-top: 15vh;
+        /* 小さいとリンクが下になりすぎるのを調整 */
+    }
+}
+
+
+/* リンク先がヘッッダーに隠れないようにする */
+a.wrapper {
+    display: block;
+
+}
+
+/* セクションタイトル */
+h2 {
+    margin-bottom: 5vh;
+    margin-top: 5vh;
+    display: flex;
+    align-items: center;
+    /* 縦位置の調整 */
+}
+
+/* セクション枠線 */
+h2::before,
+h2::after {
+    content: '';
+    /* 要素の前後に要素もどきが入る。 */
+    flex-grow: 1;
+    /* 見出し以外の余白部分を1:1の割合で分け与える */
+    height: 3px;
+    background: #000;
+}
+
+
+
+/*----- ブロック崩し ---------------------------------------*/
+
+.game-main {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#myCanvas {
+    border: 3px solid #000;
+    width: 70vw;
+    border-radius: 10px;
+    background: url("game.jpg");     /* 背景表示 */
+}
+
+.sec-block-button button {
+    margin: 5%;
+    padding: 2%;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #000;
+    background: #EEEEEE;
+    border: 3px dotted #000;
+    cursor: pointer;
+    transition: 0.5s;
+    /* ホバー時の変化をゆるやかにしている */
+    border-radius: 10px;
+}
+@media screen and (max-width: 400px) {
+    .sec-block-button button {
+        margin: 2%;
+        padding: 1%;
+    }
+}
+
+.sec-block-button button:hover {
+    opacity: 0.5;
+}
+
+.sec-control-button button {
+    margin: 5%;
+    padding: 2%;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #000;
+    background: #EEEEEE;
+    border: 3px dotted #000;
+    cursor: pointer;
+    transition: 0.5s;
+    /* ホバー時の変化をゆるやかにしている */
+    border-radius: 10px;
+}
+@media screen and (max-width: 400px) {
+    .sec-control-button button {
+        margin: 2%;
+        padding: 1%;
+    }
+}
+
+.sec-control-button button:hover {
+    opacity: 0.5;
+}
+
+/*----- トップへ戻る ---------------------------------------*/
+.pagetop {
+    position: fixed;
+    /* 右下に固定 */
+    bottom: 2vh;
+    right: 2vw;
+    background: #FFDDFF;
+    border-radius: 5px;
+}
+
+.pagetop a {
+    display: block;
+    text-decoration: none;
+    padding: 5px;
+    font-weight: bold;
+}
+
+.pagetop:hover {
+    opacity: 0.85;
+}
+
+
+/*----- フッター --------------------------------------------*/
+.footer {
+    height: 5vh;
+}
+
+
